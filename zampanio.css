@@ -1,7 +1,11 @@
 #story_container{
   width: 30vw;
-  height: 100vh;
+  height: 90vh;
   border: 3px solid #a10000;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  overflow: auto;
 }
 
 #container{

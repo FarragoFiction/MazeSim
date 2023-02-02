@@ -1,6 +1,7 @@
 #maze_container {
   position: relative;
   display: inline-block;
+  margin-left: 30vw;
 }
 #maze {
   position: relative;
