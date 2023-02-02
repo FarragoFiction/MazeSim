@@ -4,13 +4,13 @@
 <div id="container">
   <div id="story_container"><p>JR NOTE: TODO</p>
     <ul>
-      <li>can i rip out the top wall if its not the first maze?</li>
+      <li>can i make a lil square man that always turns 'right'? (he needs to know which maze he is in, which div to render himself to and the data of the maze he's in to know where he can go)</li>
+
       <li>can i keep generating mazes as you scroll?</li>
       <li>can i grab out just the data from the maze?</li>
-      <li>can i make a lil square man that always turns 'right'?</li>
       <li>can i make the system scroll to his position (so it generates new mazes as you watch)</li>
       <li>can i have a button to transvers the maze clockwise instead (only left turns)?</li>
-      <li>can i have the lil wanderer find things in the maze and report on them in this area?</li>
+      <li>can i have the lil wanderer find things in the maze and report on them in this area? (render in square)</li>
       <li>can i make it severely fucked up and liminal and meta?</li>
 
     </ul>
@@ -30,10 +30,12 @@ let parent;
     console.log("JR NOTE: load")
     renderOneMaze(true);
     renderOneMaze();
+    renderOneMaze();
+
   }
 
   const renderOneMaze = (first=false)=>{
-    const ele = createElementWithClassAndParent("div",parent,"maze")
+    const ele = createElementWithClassAndParent("div",parent,"jr-maze")
     let Maze = new MazeBuilder(30, 20,first);
     Maze.display(ele);
   }
