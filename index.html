@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="mazing.css">
+<link rel="stylesheet" type="text/css" href="zampanio.css">
+
+<div id="container">
+  <div id="story_container"></div>
+<div id="maze_container"><!-- --></div>
+</div>
+
+<script src="utils.js"></script>
+
+<script src="maze-builder.js"></script>
+<script>
+
+let parent;
+  window.onload = ()=>{
+     parent = document.querySelector("#maze_container");
+
+    console.log("JR NOTE: load")
+    renderOneMaze();
+    renderOneMaze();
+  }
+
+  const renderOneMaze = (entrance_x,entrance_y)=>{
+    const ele = createElementWithClassAndParent("div",parent,"maze")
+    let Maze = new MazeBuilder(33, 20);
+    Maze.display(ele);
+  }
+
+
+
+</script>

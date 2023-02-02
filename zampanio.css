@@ -1,0 +1,10 @@
+#story_container{
+  width: 30vw;
+  height: 100vh;
+  border: 3px solid #a10000;
+}
+
+#container{
+  display: flex;
+  flex-direction: row;
+}
