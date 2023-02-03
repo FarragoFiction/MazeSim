@@ -18,3 +18,7 @@
   display: block;
   margin-left: 30vw;
 }
+
+.wanderer{
+  z-index: 100;
+}

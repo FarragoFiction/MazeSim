@@ -3,11 +3,11 @@
 
 class MazeBuilder {
 
-  constructor(width, height, first) {
+  constructor(width, height, id) {
 
     this.width = width;
     this.height = height;
-    this.first = first; // if its first, it should have a top wall. otherwise it
+    this.id = id; // if its first, it should have a top wall. plus used by wanderer to orient
 
     this.cols = 2 * this.width + 1;
     this.rows = 2 * this.height + 1;
@@ -50,7 +50,7 @@ class MazeBuilder {
     });
 
     //if its not the first maze, remove the first row of walls and leave them blank
-    if (!this.first) {
+    if (this.id != 0) {
       for (let i = 0; i < this.cols; i++) {
         this.maze[0][i] = this.maze[1][i];
       }
@@ -58,7 +58,7 @@ class MazeBuilder {
 
     // start partitioning
     this.partition(1, this.height - 1, 1, this.width - 1);
-    if (!this.first) {
+    if (this.id != 0) {
       for (let i = 0; i < this.cols; i++) {
         this.maze[0][i] = this.maze[1][i];
       }
@@ -268,8 +268,10 @@ class MazeBuilder {
 
     const container = document.createElement("div");
     container.className = "maze";
+    container.id = "maze"+this.id;
     container.dataset.steps = this.totalSteps;
 
+    //don't need to label these, i think i can find them by child indices
     this.maze.forEach((row) => {
       let rowDiv = document.createElement("div");
       row.forEach((cell) => {

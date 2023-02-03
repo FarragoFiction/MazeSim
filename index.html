@@ -11,7 +11,7 @@
       <li>can i make the system scroll to his position (so it generates new mazes as you watch)</li>
       <li>can i have a button to transvers the maze clockwise instead (only left turns)?</li>
       <li>can i have the lil wanderer find things in the maze and report on them in this area? (render in square)</li>
-      <li>can i make it severely fucked up and liminal and meta?</li>
+      <li>can i make it severely fucked up and liminal and meta? wanderer finds worse and worse shit over time.  (zampanini tie in? bags from fast food restaurants at first, etc)</li>
 
     </ul>
   </div>
@@ -21,16 +21,21 @@
 <script src="utils.js"></script>
 
 <script src="maze-builder.js"></script>
+<script src="wanderer.js"></script>
+
 <script>
 
 let parent;
+let wanderer;
+let maze_index = 0;
   window.onload = ()=>{
      parent = document.querySelector("#maze_container");
 
     console.log("JR NOTE: load")
-    renderOneMaze(true);
-    renderOneMaze();
-    renderOneMaze();
+    renderOneMaze(maze_index++);
+    renderOneMaze(maze_index++);
+    renderOneMaze(maze_index++);
+    wanderer = new Wanderer();
 
   }
 

@@ -109,6 +109,11 @@ const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
   }
 }
 
+const prettyPrint = (text) => {
+  console.log(`%c${text}`, "font-weight: bold;font-family: 'Avenir', monospace;color:black; font-size:18px;");
+
+}
+
 //async, you'll want to await this.
 //since using this will mean you don't have anything on screen yet, you'll want some kinda placeholder
 const httpGetAsync = async (theUrl) => {
