@@ -6,7 +6,7 @@ class Wanderer {
   src = "images/real_eye.png";
   //reference to jeffery's tapes
   transverses_mazes_clockwise = true;
-  maze_id = 0;//which maze are you currently in
+  maze_number = 0;//which maze are you currently in
   x = 3; 
   y = 3;
   element;
@@ -24,6 +24,11 @@ class Wanderer {
     prettyPrint("It does not open, no matter how hard you try. It seems as though the only way out is forward.")
 
     let door = document.querySelector(".door");
+    //shitty parsing for location so you know where you are
+    let tmp = door.classList.value;
+    let coords = tmp.replaceAll(")","").split("(")[1].split(",");
+    this.x = parseInt(coords[0]);
+    this.y = parseInt(coords[1]);
     door.append(this.element);
     prettyPrint("You decide to call the direction away from the door 'south'.")
     prettyPrint("Not for any reason in particular. It does help you feel less lost, though...")
@@ -33,7 +38,41 @@ class Wanderer {
 
   }
 
-  attachToDomElementWithCoordinates =(maze_id, x,y)=>{
+  goNorth = ()=>{
+    this.attachToDomElementWithCoordinates(this.x, this.y-1)
+  }
+
+  goSouth = ()=>{
+    this.attachToDomElementWithCoordinates(this.x, this.y+1)
+
+  }
+
+  //it feels so wrong to let you do this
+  //i might just disable it if it turns out you can solve the maze without it
+  //no then you'd get stuck in right hand dead ends. 
+  //terrible. disgusting.
+  //the things i do for art.
+  goWest = ()=>{
+    this. attachToDomElementWithCoordinates(this.x+1, this.y)
+    prettyPrint("This feels...wrong. Somehow.");
+
+  }
+
+
+  goEast = ()=>{
+    this.attachToDomElementWithCoordinates(this.x+1, this.y)
+  }
+
+  attachToDomElementWithCoordinates =(x,y)=>{
+      let maze = document.querySelector("#maze"+this.maze_number);
+      console.log("JR NOE: maze was",maze,x,y)
+      let row = maze.children[y];
+      let square = row.children[x];
+      square.append(this.element);
+      this.x = x;
+      this.y = y;
+      prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
+      console.log("JR NOTE: ",square.children)
 
   }
 }

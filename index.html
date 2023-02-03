@@ -4,10 +4,18 @@
 <div id="container">
   <div id="story_container"><p>JR NOTE: TODO</p>
     <ul>
-      <li>can i make a lil square man that always turns 'right'? (he needs to know which maze he is in, which div to render himself to and the data of the maze he's in to know where he can go)</li>
-
+      <li>refuse to put wanderer inside a wall (unless haxmode on)</li>
+      <li>if wanderer is at the exit and moves south, put them in the next maze</li>
+      <li>wanderer ai loop:</li>
+      <li>
+        * be aware of what direction yyou are facing (based on where you came from)</li>
+        <li>* if the position to your right, from the perspective of where you're facing is free, go there.
+          <li>* if it is not open, go forward if you can't
+            <li>* if you can't, go backwards? (i think, will need testing)
+      </li>
+      <li>make sure scroll follows wanderer</li>
       <li>can i keep generating mazes as you scroll?</li>
-      <li>can i grab out just the data from the maze?</li>
+      <li>can i make the mazes seeded random?</li>
       <li>can i make the system scroll to his position (so it generates new mazes as you watch)</li>
       <li>can i have a button to transvers the maze clockwise instead (only left turns)?</li>
       <li>can i have the lil wanderer find things in the maze and report on them in this area? (render in square)</li>
