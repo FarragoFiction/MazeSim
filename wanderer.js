@@ -47,11 +47,21 @@ class Wanderer {
 
   }
 
-  wander = async ()=>{
-    if(this.wandering){
+  wander = async () => {
+    if (this.wandering) {
       this.decideWhatDirectionToMove();
       setTimeout(this.wander, 50);
     }
+  }
+
+  //x is the same, but y is different.
+  goToNextMaze = () => {
+    this.maze_number++;
+    let maze = document.querySelector("#maze" + this.maze_number);
+    //render not the maze we're going into, but the one after that
+    renderOneMaze(maze_index++);
+    this.y = 0;
+    this.moveToSquare({ x: this.x, y: this.y, direction: DIRECTION_ENUM.SOUTH, square: this.getSquareAt(this.x, this.y) });
   }
 
   getSquareAt = (x, y) => {
@@ -68,12 +78,20 @@ class Wanderer {
   }
 
   decideWhatDirectionToMove = () => {
+
+    if (!this.getSouthSquare().square) {
+      this.goToNextMaze();
+      return;
+    }
+
     //relative to the wanderer. they are facing the direction they last moved in.
     let right;
     let forwards;
     let back;
     let left;
     console.log("JR NOTE: last direction was ", this.last_direction)
+
+
 
     //figure out what all the relative directions are
     if (this.last_direction == DIRECTION_ENUM.SOUTH) {
@@ -106,6 +124,8 @@ class Wanderer {
     let forwards_ele = forwards.square;
     let back_ele = back.square;
 
+
+
     if (this.transverses_mazes_clockwise) {
       console.log("JR NOTE: you transverse mazes clockwise")
       if (left_ele && !left_ele.className.includes("wall")) {
@@ -136,9 +156,6 @@ class Wanderer {
       }
     }
   }
-
-
-
 
   goNorth = () => {
     this.moveToSquare(this.getNorthSquare());
@@ -188,7 +205,7 @@ class Wanderer {
 
   //movement_object has direction and square and x and y
   moveToSquare = (movement_object) => {
-    if(!movement_object.square){
+    if (!movement_object.square) {
       prettyPrint("You have nowhere to move...")
       return;
     }
