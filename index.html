@@ -2,12 +2,24 @@
 <link rel="stylesheet" type="text/css" href="zampanio.css">
 
 <div id="container">
-  <div id="story_container"><p>JR NOTE: TODO</p>
+  <div id="story_container">
+    
+    <div>
+      <label>Do you traverse mazes clockwise or counterclockwise? </label>
+      <select id="traversal-mode">
+        <option>Clockwise, of course.</option>
+        <option>Counterclockwise.</option>
+      </select>
+      <div id="response"></div>
+    </div>
+    <button id="play-button">Pause</button>
+    <p>JR NOTE: TODO</p>
     <ul>
 
       <li>if maze changes, scroll to center of new maze</li>
       <li>can i keep generating mazes as you scroll? (always at least one maze off screen)</li>
       <li>can i have a button to transvers the maze clockwise instead (only left turns)?</li>
+      <li>entirely different content is found if you're mirrored (clockwise vs counterclockwise)</li>
       <li>can i have the lil wanderer find things in the maze and report on them in this area? (render in square)</li>
       <li>can i make it severely fucked up and liminal and meta? wanderer finds worse and worse shit over time.  (zampanini tie in? bags from fast food restaurants at first, etc)</li>
       <li>can i utilize the old timey images from that museum? https://www.si.edu/search/collection-images?edan_q=flower&oa=1&edan_fq%5B0%5D=media_usage%3ACC0</li>
@@ -33,8 +45,33 @@ let maze_index = 0;
     renderOneMaze(maze_index++);
     renderOneMaze(maze_index++);
     wanderer = new Wanderer();
-    wanderer.wander();
+    let button = document.querySelector("#play-button");
+    button.onclick = togglePlayPause;
 
+    let select = document.querySelector("#traversal-mode");
+    select.onchange = (e)=>{
+      if(select.value.includes("Counter")){
+        wanderer.traverses_mazes_clockwise = false;
+        //removed because your job here isn't to PLAY this game. you have one choice. you're not supposed to go back and forth to direct the Wanderer.
+        select.remove();
+        let response = document.querySelector("#response");
+        response.innerText = "Your answer deviates. But is noted.";
+      }
+
+    }
+    wanderer.wander();
+  }
+
+  const togglePlayPause = (e)=>{
+    let button =e.target;
+    console.log(button);
+    if(button.innerText === "Pause"){
+      button.innerText = "Play";
+      wanderer.pause();
+    }else{
+      button.innerText = "Pause";
+      wanderer.resume();
+    }
   }
 
   const renderOneMaze = (first=false)=>{

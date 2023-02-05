@@ -11,7 +11,7 @@ class Wanderer {
 
   src = "images/real_eye.png";
   //reference to jeffery's tapes
-  transverses_mazes_clockwise = true; //if you go clockwise always go LEFT, not right
+  traverses_mazes_clockwise = true; //if you go clockwise always go LEFT, not right
   maze_number = 0;//which maze are you currently in
   x = 3;
   y = 3;
@@ -47,10 +47,19 @@ class Wanderer {
 
   }
 
+  pause = () => {
+    this.wandering = false;
+  }
+
+  resume = () => {
+    this.wandering = true;
+    this.wander();
+  }
+
   wander = async () => {
     if (this.wandering) {
       this.decideWhatDirectionToMove();
-      setTimeout(()=>window.requestAnimationFrame(this.wander), 50);
+      setTimeout(() => window.requestAnimationFrame(this.wander), 50);
     }
   }
 
@@ -126,7 +135,7 @@ class Wanderer {
 
 
 
-    if (this.transverses_mazes_clockwise) {
+    if (this.traverses_mazes_clockwise) {
       console.log("JR NOTE: you transverse mazes clockwise")
       if (left_ele && !left_ele.className.includes("wall")) {
         console.log("JR NOTE: going left")
@@ -140,17 +149,16 @@ class Wanderer {
       } else if (back_ele && !back_ele.className.includes("wall")) {
         console.log("JR NOTE: going back")
         this.moveToSquare(back);
-
       }
     } else {
       console.log("JR NOTE: you do NOT transverse mazes clockwise")
 
       if (right_ele && !right_ele.className.includes("wall")) {
-        this.moveToSquare(left);
+        this.moveToSquare(right);
       } else if (forwards_ele && !forwards_ele.className.includes("wall")) {
         this.moveToSquare(forwards);
       } else if (left_ele && !left_ele.className.includes("wall")) {
-        this.moveToSquare(right);
+        this.moveToSquare(left);
       } else if (back_ele && !back_ele.className.includes("wall")) {
         this.moveToSquare(back);
       }

@@ -5,7 +5,9 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1vw;
 }
 
 #container{
@@ -16,11 +18,23 @@
 .jr-maze {
   position: relative;
   display: block;
-  margin-left: 30vw;
+  margin-left: 32vw;
+}
+
+#response{
+  margin: 13px;
 }
 
 .wanderer{
   z-index: 100;
+}
+
+label{
+  font-weight: bolder;
+}
+select{
+  margin-top: 13px;
+  margin-bottom: 13px;
 }
 
 .debug{
