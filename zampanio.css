@@ -22,3 +22,11 @@
 .wanderer{
   z-index: 100;
 }
+
+.debug{
+  z-index: 99;
+  background-color: #a10000;
+  width: 100%;
+  height: 100%;
+  opacity: 33%;
+}

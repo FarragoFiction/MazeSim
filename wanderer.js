@@ -64,6 +64,9 @@ class Wanderer {
     let forwards;
     let back;
     let left;
+    console.log("JR NOTE: last direction was ", this.last_direction)
+
+    //figure out what all the relative directions are
     if (this.last_direction == DIRECTION_ENUM.SOUTH) {
       right = this.getWestSquare();
       left = this.getEastSquare();
@@ -85,6 +88,8 @@ class Wanderer {
       forwards = this.getWestSquare();
       back = this.getEastSquare();
     }
+    //handle actually moving 
+
     //if we transverse mazes clockwise, always pick your left if possible. forwards if not, backwards if not, right as last resort;
     //if you don't transverse mazes clockwise, same thing, but swap left and right
     let left_ele = left.square;
@@ -93,27 +98,38 @@ class Wanderer {
     let back_ele = back.square;
 
     if (this.transverses_mazes_clockwise) {
+      console.log("JR NOTE: you transverse mazes clockwise")
       if (left_ele && !left_ele.className.includes("wall")) {
+        console.log("JR NOTE: going left")
         this.moveToSquare(left);
       } else if (forwards_ele && !forwards_ele.className.includes("wall")) {
+        console.log("JR NOTE: going forards")
         this.moveToSquare(forwards);
-      } else if (back_ele.square && !back_ele.className.includes("wall")) {
-        this.moveToSquare(back);
-      } else if (right_ele.square && !right_ele.className.includes("wall")) {
+      } else if (right_ele && !right_ele.className.includes("wall")) {
+        console.log("JR NOTE: going right")
         this.moveToSquare(right);
+      } else if (back_ele && !back_ele.className.includes("wall")) {
+        console.log("JR NOTE: going back")
+        this.moveToSquare(back);
+
       }
     } else {
+      console.log("JR NOTE: you do NOT transverse mazes clockwise")
+
       if (right_ele && !right_ele.className.includes("wall")) {
         this.moveToSquare(left);
       } else if (forwards_ele && !forwards_ele.className.includes("wall")) {
         this.moveToSquare(forwards);
-      } else if (back_ele.square && !back_ele.className.includes("wall")) {
-        this.moveToSquare(back);
-      } else if (left_ele.square && !left_ele.className.includes("wall")) {
+      } else if (left_ele && !left_ele.className.includes("wall")) {
         this.moveToSquare(right);
+      } else if (back_ele && !back_ele.className.includes("wall")) {
+        this.moveToSquare(back);
       }
     }
   }
+
+
+
 
   goNorth = () => {
     this.moveToSquare(this.getNorthSquare());
@@ -122,7 +138,7 @@ class Wanderer {
   getNorthSquare = () => {
     let x = this.x;
     let y = this.y - 1;
-    return { x, y, direction: DIRECTION_ENUM.EAST, square: this.getSquareAt(x, y) };
+    return { x, y, direction: DIRECTION_ENUM.NORTH, square: this.getSquareAt(x, y) };
   }
 
   goSouth = () => {
@@ -132,7 +148,7 @@ class Wanderer {
   getSouthSquare = () => {
     let x = this.x;
     let y = this.y + 1;
-    return { x, y, direction: DIRECTION_ENUM.EAST, square: this.getSquareAt(x, y) };
+    return { x, y, direction: DIRECTION_ENUM.SOUTH, square: this.getSquareAt(x, y) };
   }
 
   //it feels so wrong to let you do this
@@ -148,7 +164,7 @@ class Wanderer {
   getWestSquare = () => {
     let x = this.x - 1;
     let y = this.y;
-    return { x, y, direction: DIRECTION_ENUM.EAST, square: this.getSquareAt(x, y) };
+    return { x, y, direction: DIRECTION_ENUM.WEST, square: this.getSquareAt(x, y) };
   }
 
 
@@ -173,6 +189,8 @@ class Wanderer {
     this.y = movement_object.y;
     prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
     prettyPrint(`You move ${this.last_direction}` + this.last_direction == DIRECTION_ENUM.WEST ? "This feels...wrong. Somehow." : "");
-
+    let debug_ele = document.createElement("div");
+    debug_ele.className = "debug";
+    movement_object.square.append(debug_ele);
   }
 }
