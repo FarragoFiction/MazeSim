@@ -226,5 +226,12 @@ class Wanderer {
     let debug_ele = document.createElement("div");
     debug_ele.className = "debug";
     movement_object.square.append(debug_ele);
+    let rect = this.element.getClientRects()[0];
+    //window.scrollTo(rect.x, rect.y);
+    this.element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center'
+  });
   }
 }
