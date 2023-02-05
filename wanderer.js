@@ -46,24 +46,20 @@ class Wanderer {
   }
 
   getSquareAt = (x, y) => {
-    let maze = document.querySelector("#maze" + this.maze_number);
-    console.log("JR NOE: maze was", maze, x, y)
-    let row = maze.children[y];
-    let square = row.children[x];
-    return square;
+    try {
+      let maze = document.querySelector("#maze" + this.maze_number);
+      console.log("JR NOE: maze was", maze, x, y)
+      let row = maze.children[y];
+      let square = row.children[x];
+      return square;
+    } catch (e) {
+      prettyPrint("You are at an edge of the Maze.");
+      return null;
+    }
   }
 
   decideWhatDirectionToMove = () => {
-    /*
-    if last direction i moved was x, go y:
-    south: right
-    east: down
-    north: left
-    west: up
-    */
     //relative to the wanderer. they are facing the direction they last moved in.
-    //so south switches left and right
-    //and facing east or west makes up and down left and right
     let right;
     let forwards;
     let back;
@@ -89,34 +85,54 @@ class Wanderer {
       forwards = this.getWestSquare();
       back = this.getEastSquare();
     }
-    //if we transverse mazes clockwise, always pick your left if possible. otherwise right;
+    //if we transverse mazes clockwise, always pick your left if possible. forwards if not, backwards if not, right as last resort;
+    //if you don't transverse mazes clockwise, same thing, but swap left and right
+    let left_ele = left.square;
+    let right_ele = right.square;
+    let forwards_ele = forwards.square;
+    let back_ele = back.square;
+
     if (this.transverses_mazes_clockwise) {
-
+      if (left_ele && !left_ele.className.includes("wall")) {
+        this.moveToSquare(left);
+      } else if (forwards_ele && !forwards_ele.className.includes("wall")) {
+        this.moveToSquare(forwards);
+      } else if (back_ele.square && !back_ele.className.includes("wall")) {
+        this.moveToSquare(back);
+      } else if (right_ele.square && !right_ele.className.includes("wall")) {
+        this.moveToSquare(right);
+      }
     } else {
-
+      if (right_ele && !right_ele.className.includes("wall")) {
+        this.moveToSquare(left);
+      } else if (forwards_ele && !forwards_ele.className.includes("wall")) {
+        this.moveToSquare(forwards);
+      } else if (back_ele.square && !back_ele.className.includes("wall")) {
+        this.moveToSquare(back);
+      } else if (left_ele.square && !left_ele.className.includes("wall")) {
+        this.moveToSquare(right);
+      }
     }
-
-
   }
 
-  goNorth = ()=>{
+  goNorth = () => {
     this.moveToSquare(this.getNorthSquare());
   }
 
   getNorthSquare = () => {
     let x = this.x;
-    let y = this.y-1;
-    return {x,y, direction:  DIRECTION_ENUM.EAST, square: this.getSquareAt(x,y)};
+    let y = this.y - 1;
+    return { x, y, direction: DIRECTION_ENUM.EAST, square: this.getSquareAt(x, y) };
   }
 
-  goSouth = ()=>{
+  goSouth = () => {
     this.moveToSquare(this.getSouthSquare());
   }
 
   getSouthSquare = () => {
     let x = this.x;
-    let y = this.y+1;
-    return {x,y, direction:  DIRECTION_ENUM.EAST, square: this.getSquareAt(x,y)};
+    let y = this.y + 1;
+    return { x, y, direction: DIRECTION_ENUM.EAST, square: this.getSquareAt(x, y) };
   }
 
   //it feels so wrong to let you do this
@@ -125,28 +141,32 @@ class Wanderer {
   //terrible. disgusting.
   //the things i do for art.
 
-  goWest = ()=>{
+  goWest = () => {
     this.moveToSquare(this.getWestSquare());
   }
 
   getWestSquare = () => {
     let x = this.x - 1;
     let y = this.y;
-    return {x,y, direction:  DIRECTION_ENUM.EAST, square: this.getSquareAt(x,y)};
+    return { x, y, direction: DIRECTION_ENUM.EAST, square: this.getSquareAt(x, y) };
   }
 
 
-  goEast = ()=>{
+  goEast = () => {
     this.moveToSquare(this.getEastSquare());
   }
   getEastSquare = () => {
     let x = this.x + 1;
     let y = this.y;
-    return {x,y, direction:  DIRECTION_ENUM.EAST, square: this.getSquareAt(x,y)};
+    return { x, y, direction: DIRECTION_ENUM.EAST, square: this.getSquareAt(x, y) };
   }
 
   //movement_object has direction and square and x and y
   moveToSquare = (movement_object) => {
+    if(!movement_object.square){
+      prettyPrint("You have nowhere to move...")
+      return;
+    }
     this.last_direction = movement_object.direction;
     movement_object.square.append(this.element);
     this.x = movement_object.x;
