@@ -50,7 +50,7 @@ class Wanderer {
   wander = async ()=>{
     if(this.wandering){
       this.decideWhatDirectionToMove();
-      setTimeout(this.wander, 500);
+      setTimeout(this.wander, 50);
     }
   }
 
