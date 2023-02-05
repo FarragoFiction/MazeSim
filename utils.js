@@ -114,6 +114,10 @@ const prettyPrint = (text) => {
 
 }
 
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 //async, you'll want to await this.
 //since using this will mean you don't have anything on screen yet, you'll want some kinda placeholder
 const httpGetAsync = async (theUrl) => {

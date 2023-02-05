@@ -17,6 +17,7 @@ class Wanderer {
   y = 3;
   element;
   last_direction = DIRECTION_ENUM.SOUTH;
+  wandering = true;
 
   constructor() {
     prettyPrint("You are in a maze.")
@@ -25,6 +26,7 @@ class Wanderer {
     this.element.className = "wanderer";
     this.spawnAtDoor();
   }
+
 
   spawnAtDoor = () => {
     prettyPrint("You must not have always been in this maze. There is a door behind you, after all.")
@@ -43,6 +45,13 @@ class Wanderer {
     prettyPrint("You need all the help you can get.");
     prettyPrint("The carpet on the floor and the wallpaper bleed into each other in a sea of beige yellow.")
 
+  }
+
+  wander = async ()=>{
+    if(this.wandering){
+      this.decideWhatDirectionToMove();
+      setTimeout(this.wander, 500);
+    }
   }
 
   getSquareAt = (x, y) => {
