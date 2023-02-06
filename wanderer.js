@@ -65,6 +65,7 @@ class Wanderer {
         time = 1000*10;
         this.sticker_set_found.parentElement.className="";//you don't have a sticker anymore
         this.sticker_set_found.click();
+        this.sticker_set_found.remove();
         this.sticker_set_found = null;
       }
 
