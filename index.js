@@ -2,8 +2,14 @@
 let parent;
 let wanderer;
 let maze_index = 0;
+let seeded_random;
+let story_container; 
   window.onload = ()=>{
+    initThemes();
+    seeded_random = new SeededRandom(13);
      parent = document.querySelector("#maze_container");
+     story_container = document.querySelector("#story_container");
+
     renderOneMaze(maze_index++);
     renderOneMaze(maze_index++);
     wanderer = new Wanderer();
@@ -22,6 +28,12 @@ let maze_index = 0;
 
     }
     wanderer.wander();
+  }
+
+  const writeOnScreen = (text)=>{
+    let ele = createElementWithClassAndParent("div",story_container, "story");
+    ele.innerText = text;
+    story_container.scrollBy({top: 1000});
   }
 
   const togglePlayPause = (e)=>{

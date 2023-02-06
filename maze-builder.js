@@ -293,6 +293,7 @@ class MazeBuilder {
     });
 
     this.parentDiv.appendChild(container);
+    spawnStickersInMaze(container);
 
     return true;
   }

@@ -1,6 +1,4 @@
-let ele;
 
-let how_long_well_let_them_explore = 500;
 
 const createElementWithClass = (eleName, className) => {
   const ele = document.createElement(eleName);
