@@ -18,6 +18,7 @@ class Wanderer {
   element;
   last_direction = DIRECTION_ENUM.SOUTH;
   wandering = true;
+  sticker_set_found;//if theres something here, we have to process it.
 
   constructor() {
     prettyPrint("You are in a maze.")
@@ -59,7 +60,15 @@ class Wanderer {
   wander = async () => {
     if (this.wandering) {
       this.decideWhatDirectionToMove();
-      setTimeout(() => window.requestAnimationFrame(this.wander), 50);
+      let time = 50;
+      if(this.sticker_set_found){
+        time = 1000*10;
+        this.sticker_set_found.parentElement.className="";//you don't have a sticker anymore
+        this.sticker_set_found.click();
+        this.sticker_set_found = null;
+      }
+
+      setTimeout(() => window.requestAnimationFrame(this.wander), time);
     }
   }
 
@@ -213,8 +222,8 @@ class Wanderer {
     movement_object.square.append(this.element);
     this.x = movement_object.x;
     this.y = movement_object.y;
-   // prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
-   // prettyPrint(`You move ${this.last_direction}` + this.last_direction == DIRECTION_ENUM.WEST ? "This feels...wrong. Somehow." : "");
+    // prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
+    // prettyPrint(`You move ${this.last_direction}` + this.last_direction == DIRECTION_ENUM.WEST ? "This feels...wrong. Somehow." : "");
     let debug_ele = document.createElement("div");
     debug_ele.className = "debug";
     movement_object.square.append(debug_ele);
@@ -224,6 +233,9 @@ class Wanderer {
       behavior: 'smooth',
       block: 'center',
       inline: 'center'
-  });
+    });
+    if(movement_object.square.className.includes("sticker")){
+      this.sticker_set_found = movement_object.square.children[0];
+    }
   }
 }

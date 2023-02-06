@@ -35,13 +35,14 @@ const spawnStickersInMaze = (maze_element)=>{
 }
 
 const randomStickerSet = (rand,writeOnScreen)=>{
-  let text = "placeholder";
   const chosenThemeKey = rand.pickFrom(keys);
   console.log("JR NOTE: ",{chosenThemeKey})
   const chosenTheme = all_themes[chosenThemeKey];
   console.log("JR NOTE: ",{chosenTheme})
 
   let icon = chosenTheme.pickPossibilityFor(ICON, rand);
+  let text = `<hr>You got a ${icon} sticker set!<br>You take a little bit of time to read it.<BR>JR NOTE: TODO`;
+
   return new StickerSet(icon,chosenTheme,text,  writeOnScreen);
 
 }
