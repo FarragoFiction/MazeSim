@@ -44,3 +44,7 @@ select{
   height: 100%;
   opacity: 33%;
 }
+
+.maze div div.sticker::after {
+  content: "\1F319";
+}

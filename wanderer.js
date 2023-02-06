@@ -76,7 +76,6 @@ class Wanderer {
   getSquareAt = (x, y) => {
     try {
       let maze = document.querySelector("#maze" + this.maze_number);
-      console.log("JR NOE: maze was", maze, x, y)
       let row = maze.children[y];
       let square = row.children[x];
       return square;
@@ -98,7 +97,6 @@ class Wanderer {
     let forwards;
     let back;
     let left;
-    console.log("JR NOTE: last direction was ", this.last_direction)
 
 
 
@@ -136,22 +134,16 @@ class Wanderer {
 
 
     if (this.traverses_mazes_clockwise) {
-      console.log("JR NOTE: you transverse mazes clockwise")
       if (left_ele && !left_ele.className.includes("wall")) {
-        console.log("JR NOTE: going left")
         this.moveToSquare(left);
       } else if (forwards_ele && !forwards_ele.className.includes("wall")) {
-        console.log("JR NOTE: going forards")
         this.moveToSquare(forwards);
       } else if (right_ele && !right_ele.className.includes("wall")) {
-        console.log("JR NOTE: going right")
         this.moveToSquare(right);
       } else if (back_ele && !back_ele.className.includes("wall")) {
-        console.log("JR NOTE: going back")
         this.moveToSquare(back);
       }
     } else {
-      console.log("JR NOTE: you do NOT transverse mazes clockwise")
 
       if (right_ele && !right_ele.className.includes("wall")) {
         this.moveToSquare(right);
@@ -221,8 +213,8 @@ class Wanderer {
     movement_object.square.append(this.element);
     this.x = movement_object.x;
     this.y = movement_object.y;
-    prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
-    prettyPrint(`You move ${this.last_direction}` + this.last_direction == DIRECTION_ENUM.WEST ? "This feels...wrong. Somehow." : "");
+   // prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
+   // prettyPrint(`You move ${this.last_direction}` + this.last_direction == DIRECTION_ENUM.WEST ? "This feels...wrong. Somehow." : "");
     let debug_ele = document.createElement("div");
     debug_ele.className = "debug";
     movement_object.square.append(debug_ele);

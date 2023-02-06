@@ -63,6 +63,14 @@ class MazeBuilder {
         this.maze[0][i] = this.maze[1][i];
       }
     }
+     //stickers
+     for(let row = 0; row < this.rows; row++){
+      for(let col = 0; col <this.cols; col++){
+        if(row !=0 && this.maze[row][col].indexOf("wall")===-1 && Math.random()>0.99){
+          this.maze[row][col] = ["sticker"]
+        }
+      }
+     }
   }
 
   initArray(value) {
@@ -268,7 +276,7 @@ class MazeBuilder {
 
     const container = document.createElement("div");
     container.className = "maze";
-    container.id = "maze"+this.id;
+    container.id = "maze" + this.id;
     container.dataset.steps = this.totalSteps;
 
     //don't need to label these, i think i can find them by child indices
