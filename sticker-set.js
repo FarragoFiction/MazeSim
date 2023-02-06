@@ -106,15 +106,13 @@ const getRestaurantName = (rand, theme_keys, weird) => {
 const randomStickerSet = (rand,writeOnScreen)=>{
   const chosenThemeKey = rand.pickFrom(keys);
   let food = food_keys.indexOf(chosenThemeKey) !== -1;
-  console.log("JR NOTE: ",{chosenThemeKey})
   const chosenTheme = all_themes[chosenThemeKey];
-  console.log("JR NOTE: ",{chosenTheme})
 
   let icon = chosenTheme.pickPossibilityFor(ICON, rand);
   let text = `<hr>
   
   <p>You got a ${icon} sticker set!</p>
-  <p>It comes with a little text blurb. You take a little bit of time to read it.</p>
+  <p>It comes with a little text blurb. You take a little bit of time to look it over.</p>
  `;
 
   let templates  = [`It shows a room. ${(sentenceCase(chosenTheme.pickPossibilityFor(LOC_DESC, rand)))}.`,`It shows a monster. ${chosenTheme.pickPossibilityFor(MONSTER_DESC, rand)}`];
@@ -122,7 +120,7 @@ const randomStickerSet = (rand,writeOnScreen)=>{
 
   if(food){
     let restaurantname = getRestaurantName(rand, [chosenThemeKey]);
-    templates = [`It shows a take out bag from ${restaurantname}. Why don't you <a href = 'http://eyedolgames.com/Zampanini/?name=${restaurantname}&themes=${chosenThemeKey}&feeUnder=${getRandomNumberBetween(3,33)}'>order</a> something yourself?`]
+    templates = [`It shows a take out bag from ${restaurantname}. Why don't you <a target="blank" href = "http://eyedolgames.com/Zampanini/?name=${encodeURIComponent(restaurantname)}&themes=${chosenThemeKey}&feeUnder=${getRandomNumberBetween(3,33)}">order</a> something yourself?`]
   }
 
   text += rand.pickFrom(templates);
