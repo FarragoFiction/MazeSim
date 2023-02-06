@@ -41,7 +41,11 @@ const randomStickerSet = (rand,writeOnScreen)=>{
   console.log("JR NOTE: ",{chosenTheme})
 
   let icon = chosenTheme.pickPossibilityFor(ICON, rand);
-  let text = `<hr>You got a ${icon} sticker set!<br>You take a little bit of time to read it.<BR>JR NOTE: TODO`;
+  let text = `<hr>
+  
+  <p>You got a ${icon} sticker set!</p>
+  <p>You take a little bit of time to read it.</p>
+  <p>JR NOTE: TODO, themed templates here.</p>`;
 
   return new StickerSet(icon,chosenTheme,text,  writeOnScreen);
 

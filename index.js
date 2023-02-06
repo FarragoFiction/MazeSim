@@ -32,7 +32,7 @@ let story_container;
 
   const writeOnScreen = (text)=>{
     let ele = createElementWithClassAndParent("div",story_container, "story");
-    ele.innerText = text;
+    ele.innerHTML = text;
     story_container.scrollBy({top: 1000});
   }
 
