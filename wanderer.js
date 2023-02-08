@@ -75,6 +75,10 @@ class Wanderer {
         this.sticker_set_found = null;
       }
 
+      if (this.traverses_mazes === TRAVERSE_ENUM.NEITHER) {
+        time = 200; //parker, buddy, slow down. we can't keep up.
+      }
+
       setTimeout(() => window.requestAnimationFrame(this.wander), time);
     }
   }
@@ -105,6 +109,11 @@ class Wanderer {
 
     if (!this.getSouthSquare().square) {
       this.goToNextMaze();
+      return;
+    }
+
+    if (this.traverses_mazes == TRAVERSE_ENUM.NEITHER) {
+      this.goSouth();
       return;
     }
 
@@ -159,7 +168,7 @@ class Wanderer {
       } else if (back_ele && !back_ele.className.includes("wall")) {
         this.moveToSquare(back);
       }
-    } else if(this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
+    } else if (this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
 
       if (right_ele && !right_ele.className.includes("wall")) {
         this.moveToSquare(right);
@@ -170,8 +179,6 @@ class Wanderer {
       } else if (back_ele && !back_ele.className.includes("wall")) {
         this.moveToSquare(back);
       }
-    }else{
-      this.goSouth();
     }
   }
 
@@ -245,6 +252,7 @@ class Wanderer {
       block: 'center',
       inline: 'center'
     });
+
     if (movement_object.square.className.includes("sticker")) {
       this.sticker_set_found = movement_object.square.children[0];
     }
