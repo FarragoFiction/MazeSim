@@ -58,12 +58,18 @@ class Wanderer {
   }
 
   wander = async () => {
+    if (!this.traverses_mazes_clockwise && this.element.src) {
+      let parent = this.element.parent;
+      this.element.remove();
+      this.element = document.createElement("div");
+      this.element.className = "river";
+    }
     if (this.wandering) {
       this.decideWhatDirectionToMove();
       let time = 50;
-      if(this.sticker_set_found){
-        time = 1000*10;
-        this.sticker_set_found.parentElement.className="";//you don't have a sticker anymore
+      if (this.sticker_set_found) {
+        time = 1000 * 10;
+        this.sticker_set_found.parentElement.className = "";//you don't have a sticker anymore
         this.sticker_set_found.click();
         this.sticker_set_found.remove();
         this.sticker_set_found = null;
@@ -225,9 +231,11 @@ class Wanderer {
     this.y = movement_object.y;
     // prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
     // prettyPrint(`You move ${this.last_direction}` + this.last_direction == DIRECTION_ENUM.WEST ? "This feels...wrong. Somehow." : "");
-    let debug_ele = document.createElement("div");
-    debug_ele.className = "debug";
-    movement_object.square.append(debug_ele);
+    if (!this.traverses_mazes_clockwise) {
+      let debug_ele = document.createElement("div");
+      debug_ele.className = "debug";
+      movement_object.square.append(debug_ele);
+    }
     let rect = this.element.getClientRects()[0];
     //window.scrollTo(rect.x, rect.y);
     this.element.scrollIntoView({
@@ -235,7 +243,7 @@ class Wanderer {
       block: 'center',
       inline: 'center'
     });
-    if(movement_object.square.className.includes("sticker")){
+    if (movement_object.square.className.includes("sticker")) {
       this.sticker_set_found = movement_object.square.children[0];
     }
   }
