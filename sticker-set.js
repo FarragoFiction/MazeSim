@@ -125,7 +125,7 @@ const randomStickerSet = (rand,writeOnScreen)=>{
 
   text += "<p>" +rand.pickFrom(templates) +"</p>";
 
-  let wonderings = ["Is that what Zampanio is?","You wonder if that somehow relates to Zampanio...","You wonder if this explains all those murders...","You wonder if Zampanio relates to this at all?","The point of this is to wander.","Didn't you used to have someone who cared about you? What was their name... Ted? Tim?","You wonder how long you've been reduced to merely being an eye...","Is this always how the maze has been?","Surely if you find just a few more stickers it will all make sense","You wish this would never end..."];
+  let wonderings = ["Is that what Zampanio is?","You wonder if that somehow relates to Zampanio...","You wonder if this explains all those murders...","You wonder if Zampanio relates to this at all?","The point of this is to wander.","Didn't you used to have someone who cared about you? What was their name... Ted? Tim?","You wonder how long you've been reduced to merely being an eye...","Is this always how the maze has been?","Surely if you find just a few more stickers it will all make sense","You wish this would never end...","Were you...trying to save the world? It had to be something big and important like that, to sacrifice so much..."];
   text += "<p style='font-weight:bolder'>" +rand.pickFrom(wonderings) +"</p>";
 
   return new StickerSet(icon,chosenTheme,text,  writeOnScreen);

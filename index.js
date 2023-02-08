@@ -26,9 +26,14 @@ let story_container;
         if(select.value=== TRAVERSE_ENUM.CLOCKWISE){
           response.innerText = "Not all who wander are lost. To be lost you have to care what you're going. The Wanderer only cares that there is more to see. You have long since forgotten what it is you were looking for. ";
         }else if(select.value=== TRAVERSE_ENUM.COUNTERCLOCKWISE){
+            let parent = wanderer.element.parent;
+            wanderer.element.remove();
+            wanderer.element = document.createElement("div");
+            wanderer.element.className = "river";
           response.innerText = "River is new and old and big and small. The slime of her body is confined to such a small space, just a handful of years, barely anything in the face of all of time and space. It chafes her, to be so restricted. She is doing her best. It's hard to care when everything is so big and small and nothing at all...";
         }else{
           response.innerText = "What are you doing here, Thief?";
+          wanderer.element.src="images/bullet.png";
         }
 
 

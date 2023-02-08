@@ -64,12 +64,6 @@ class Wanderer {
   }
 
   wander = async () => {
-    if (this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE && this.element.src) {
-      let parent = this.element.parent;
-      this.element.remove();
-      this.element = document.createElement("div");
-      this.element.className = "river";
-    }
     if (this.wandering) {
       this.decideWhatDirectionToMove();
       let time = 50;
@@ -177,7 +171,7 @@ class Wanderer {
         this.moveToSquare(back);
       }
     }else{
-      window.alert("BULLET TIME BB");
+      this.goSouth();
     }
   }
 
