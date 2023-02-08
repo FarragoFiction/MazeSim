@@ -7,11 +7,17 @@ const DIRECTION_ENUM = {
   WEST: "WEST",
   NORTH: "NORTH"
 }
+
+const TRAVERSE_ENUM = {
+  CLOCKWISE: "CLOCKWISE",
+  COUNTERCLOCKWISE: "COUNTERCLOCKWISE",
+  NEITHER: "NEITHER",
+}
 class Wanderer {
 
   src = "images/real_eye.png";
   //reference to jeffery's tapes
-  traverses_mazes_clockwise = true; //if you go clockwise always go LEFT, not right
+  traverses_mazes = TRAVERSE_ENUM.CLOCKWISE; //if you go clockwise always go LEFT, not right
   maze_number = 0;//which maze are you currently in
   x = 3;
   y = 3;
@@ -58,7 +64,7 @@ class Wanderer {
   }
 
   wander = async () => {
-    if (!this.traverses_mazes_clockwise && this.element.src) {
+    if (this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE && this.element.src) {
       let parent = this.element.parent;
       this.element.remove();
       this.element = document.createElement("div");
@@ -149,7 +155,7 @@ class Wanderer {
 
 
 
-    if (this.traverses_mazes_clockwise) {
+    if (this.traverses_mazes === TRAVERSE_ENUM.CLOCKWISE) {
       if (left_ele && !left_ele.className.includes("wall")) {
         this.moveToSquare(left);
       } else if (forwards_ele && !forwards_ele.className.includes("wall")) {
@@ -159,7 +165,7 @@ class Wanderer {
       } else if (back_ele && !back_ele.className.includes("wall")) {
         this.moveToSquare(back);
       }
-    } else {
+    } else if(this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
 
       if (right_ele && !right_ele.className.includes("wall")) {
         this.moveToSquare(right);
@@ -170,6 +176,8 @@ class Wanderer {
       } else if (back_ele && !back_ele.className.includes("wall")) {
         this.moveToSquare(back);
       }
+    }else{
+      window.alert("BULLET TIME BB");
     }
   }
 
@@ -231,7 +239,7 @@ class Wanderer {
     this.y = movement_object.y;
     // prettyPrint(`You move to ${this.x}, ${this.y} in maze ${this.maze_number}.`)
     // prettyPrint(`You move ${this.last_direction}` + this.last_direction == DIRECTION_ENUM.WEST ? "This feels...wrong. Somehow." : "");
-    if (!this.traverses_mazes_clockwise) {
+    if (this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
       let debug_ele = document.createElement("div");
       debug_ele.className = "debug";
       movement_object.square.append(debug_ele);

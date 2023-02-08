@@ -115,7 +115,7 @@ const randomStickerSet = (rand,writeOnScreen)=>{
   <p>It comes with a little text blurb. You take a little bit of time to look it over.</p>
  `;
 
-  let templates  = [`It shows a room. ${(sentenceCase(chosenTheme.pickPossibilityFor(LOC_DESC, rand)))}.`,`It shows a monster. ${chosenTheme.pickPossibilityFor(MONSTER_DESC, rand)}`];
+  let templates  = [`Picking it up, you feel as if ${chosenTheme.pickPossibilityFor(EFFECTS, rand)}`,`It shows a room. ${(sentenceCase(chosenTheme.pickPossibilityFor(LOC_DESC, rand)))}.`,`It shows a monster. ${chosenTheme.pickPossibilityFor(MONSTER_DESC, rand)}`];
 
 
   if(food){
@@ -123,7 +123,10 @@ const randomStickerSet = (rand,writeOnScreen)=>{
     templates = [`It shows a take out bag from ${restaurantname}. Why don't you <a target="blank" href = "http://eyedolgames.com/Zampanini/?name=${encodeURIComponent(restaurantname)}&themes=${chosenThemeKey}&feeUnder=${getRandomNumberBetween(3,33)}">order</a> something yourself?`]
   }
 
-  text += rand.pickFrom(templates);
+  text += "<p>" +rand.pickFrom(templates) +"</p>";
+
+  let wonderings = ["Is that what Zampanio is?","You wonder if that somehow relates to Zampanio...","You wonder if this explains all those murders...","You wonder if Zampanio relates to this at all?","The point of this is to wander.","Didn't you used to have someone who cared about you? What was their name... Ted? Tim?","You wonder how long you've been reduced to merely being an eye...","Is this always how the maze has been?","Surely if you find just a few more stickers it will all make sense","You wish this would never end..."];
+  text += "<p style='font-weight:bolder'>" +rand.pickFrom(wonderings) +"</p>";
 
   return new StickerSet(icon,chosenTheme,text,  writeOnScreen);
 

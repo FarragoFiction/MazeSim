@@ -18,13 +18,19 @@ let story_container;
 
     let select = document.querySelector("#traversal-mode");
     select.onchange = (e)=>{
-      if(select.value.includes("Counter")){
-        wanderer.traverses_mazes_clockwise = false;
+        wanderer.traverses_mazes = select.value;
         //removed because your job here isn't to PLAY this game. you have one choice. you're not supposed to go back and forth to direct the Wanderer.
         select.remove();
         let response = document.querySelector("#response");
-        response.innerText = "Your answer deviates. But is noted.";
-      }
+
+        if(select.value=== TRAVERSE_ENUM.CLOCKWISE){
+          response.innerText = "Not all who wander are lost. To be lost you have to care what you're going. The Wanderer only cares that there is more to see. You have long since forgotten what it is you were looking for. ";
+        }else if(select.value=== TRAVERSE_ENUM.COUNTERCLOCKWISE){
+          response.innerText = "River is new and old and big and small. The slime of her body is confined to such a small space, just a handful of years, barely anything in the face of all of time and space. It chafes her, to be so restricted. She is doing her best. It's hard to care when everything is so big and small and nothing at all...";
+        }else{
+          response.innerText = "What are you doing here, Thief?";
+        }
+
 
     }
     wanderer.wander();
