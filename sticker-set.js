@@ -115,7 +115,7 @@ const randomStickerSet = (rand,writeOnScreen)=>{
   <p>It comes with a little text blurb. You take a little bit of time to look it over.</p>
  `;
 
-  let templates  = [`Picking it up, you feel as if ${chosenTheme.pickPossibilityFor(EFFECTS, rand)}`,`It shows a room. ${(sentenceCase(chosenTheme.pickPossibilityFor(LOC_DESC, rand)))}.`,`It shows a monster. ${chosenTheme.pickPossibilityFor(MONSTER_DESC, rand)}`];
+  let templates  = [`A juttering sparking voice rings out from nowhere: '${chosenTheme.pickPossibilityFor(PHILOSOPHY, rand)}'. `,`Picking it up, you feel as if ${chosenTheme.pickPossibilityFor(EFFECTS, rand)}`,`It shows a room. ${(sentenceCase(chosenTheme.pickPossibilityFor(LOC_DESC, rand)))}.`,`It shows a monster. ${chosenTheme.pickPossibilityFor(MONSTER_DESC, rand)}`];
 
 
   if(food){
@@ -125,7 +125,7 @@ const randomStickerSet = (rand,writeOnScreen)=>{
 
   text += "<p>" +rand.pickFrom(templates) +"</p>";
 
-  let wonderings = ["Is that what Zampanio is?","You wonder if that somehow relates to Zampanio...","You wonder if this explains all those murders...","You wonder if Zampanio relates to this at all?","The point of this is to wander.","Didn't you used to have someone who cared about you? What was their name... Ted? Tim?","You wonder how long you've been reduced to merely being an eye...","Is this always how the maze has been?","Surely if you find just a few more stickers it will all make sense","You wish this would never end...","Were you...trying to save the world? It had to be something big and important like that, to sacrifice so much..."];
+  let wonderings = ["Is that what Zampanio is?","You wonder if that somehow relates to Zampanio...","You wonder if this explains all those murders...","You wonder if Zampanio relates to this at all?","The point of this is to wander.","Didn't you used to have someone who cared about you? What was their name... Ted? Tim?","You wonder how long you've been reduced to merely being an eye...","Is this always how the maze has been?","Surely if you find just a few more stickers it will all make sense","You wish this would never end...","Were you...trying to save the world? It had to be something big and important like that, to sacrifice so much...","Do you...remember dying? Is that what that pain in your chest is? The pain in your eyes? Wait. Do you still HAVE a chest?","You feel like if you just keep going eventually it will all make sense..."];
   text += "<p style='font-weight:bolder'>" +rand.pickFrom(wonderings) +"</p>";
 
   return new StickerSet(icon,chosenTheme,text,  writeOnScreen);

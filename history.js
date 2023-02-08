@@ -1,6 +1,6 @@
 //raw html is fine
 const history = [
-  {themes: [], title: "", desc: "", url: "charles_frederick_naegele_1857.jpg"}
+  {themes: [], title: "Mother and Child", desc: "it's surprising the care mothers have for their children, or i guess it's not, as i am both mother and daughter... that doesn't make it easier to parse, or easier to look through my memories for it, or understandable from this woman's perspective... was it scary to have a child back then, i wonder, was it the same feeling all creatures feel when reproducing-- either way it has to be somewhat cruel... countless children died before i could ever see them, and so many don't get to live their lives before the apocalypse... just a speck in the wind, tiny, worthless, inconsequential... i wonder what it's like to live in the would forever...", url: "charles_frederick_naegele_1857.jpg"}
   ,{themes: [],title: "", desc: "", url: "edward_harrison_may_1824.jpg"}
   ,{themes: [],title: "", desc: "", url: "edward_mitchel_bannster_1828.jpg"}
   ,{themes: [],title: "", desc: "", url: "emile_galle_1846.jpg"}

@@ -2100,7 +2100,7 @@ const initEffectPossibilities = () => {
     effect_possibilities[MAGIC] = ["mana swirls and flows around your body", "magical runes carve themselves into the very air", "a 9! pointed pattern burns itself indelibly into the ground"];
     effect_possibilities[HEALING] = ["red plus signs swirl around you", "faceless nurses wielding scalpels stand in a ring around you, facing outwards", "a hospital gurney slowly creaks into view"];
     effect_possibilities[PLANTS] = ["flowers bloom and carpet the ground", "vines twist themselves around every surface", "a forest suddenly grows in a hazy ring around you"];
-    effect_possibilities[HUNTING] = ["the scene of blood and fear is on the wind", "your teeth sharpen and your eyes glint", "you can not help but stare at the most vital and vulnerable parts of everything around you"];
+    effect_possibilities[HUNTING] = ["the scent of blood and fear is on the wind", "your teeth sharpen and your eyes glint", "you can not help but stare at the most vital and vulnerable parts of everything around you"];
     effect_possibilities[DECAY] = ["the stench of rot settles itself against the back of your throat", "a long dead corpse bubbles up from the ground, rotten and wet", "a swarm of diseased rats blankets the ground"];
     effect_possibilities[CHOICES] = ["seeing the consequences of every action laid bare before you", "double headed coins fall in a cascading pile from the ceiling", "a thousand variations of you stare at you from a circle with you at the center"];
     effect_possibilities[ZAP] = ["lightning strikes from the heavens", "electrical sparks radiate in every direction", "the very floor becomes energized"];

@@ -24,7 +24,7 @@ let story_container;
         let response = document.querySelector("#response");
 
         if(select.value=== TRAVERSE_ENUM.CLOCKWISE){
-          response.innerText = "Not all who wander are lost. To be lost you have to care what you're going. The Wanderer only cares that there is more to see. You have long since forgotten what it is you were looking for. ";
+          response.innerText = "Not all who wander are lost. To be lost you have to care what you're going. The Wanderer only cares that there is more to see. You have long since forgotten what it is you were looking for. This is always who you were. Nothing has changed, yet a process has occured. ";
         }else if(select.value=== TRAVERSE_ENUM.COUNTERCLOCKWISE){
             let parent = wanderer.element.parent;
             wanderer.element.remove();
