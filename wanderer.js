@@ -14,7 +14,6 @@ const TRAVERSE_ENUM = {
   NEITHER: "NEITHER",
 }
 class Wanderer {
-
   src = "images/real_eye.png";
   //reference to jeffery's tapes
   traverses_mazes = TRAVERSE_ENUM.CLOCKWISE; //if you go clockwise always go LEFT, not right
@@ -68,7 +67,8 @@ class Wanderer {
       this.decideWhatDirectionToMove();
       let time = 50;
       if (this.sticker_set_found) {
-        time = 1000 * 10;
+        console.log("JR NOTE: stickersetfound")
+        time = this.traverses_mazes !== TRAVERSE_ENUM.COUNTERCLOCKWISE ? 1000 * 10 : 99999999;
         this.sticker_set_found.parentElement.className = "";//you don't have a sticker anymore
         this.sticker_set_found.click();
         this.sticker_set_found.remove();
@@ -79,7 +79,10 @@ class Wanderer {
         time = 200; //parker, buddy, slow down. we can't keep up.
       }
 
-      setTimeout(() => window.requestAnimationFrame(this.wander), time);
+      //river takes her time, not till you close her popup will she continue
+      if (time < 6000) {
+        setTimeout(() => window.requestAnimationFrame(this.wander), time);
+      }
     }
   }
 

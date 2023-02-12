@@ -48,37 +48,68 @@ const checkForRiver = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let debug = urlParams.get('debug_rivers_vastness');
-  console.log("JR NOTE: debug is",debug)
-  for(let h of rivers_collection){
-    let ele = renderOneRiverCollection(h);
-    parent.append(ele);//normally they'd get a popup class but this is so we can see all of rivers vast bulk at once
+  if (debug) {
+    for (let h of rivers_collection) {
+      let ele = renderOneRiverCollection(h);
+      parent.append(ele);//normally they'd get a popup class but this is so we can see all of rivers vast bulk at once
+    }
   }
 
   return debug;
 }
 
 //something else will pop this up.
-const renderOneRiverCollection = ({title,url,desc})=>{
-    console.log("JR NOTE: URL",url);
-    let ele = createElementWithClassAndParent("div", parent, "rivers-collection");
-    
-    let imgEle = createElementWithClassAndParent("img", ele, "river-img");
-    imgEle.src = "RiversCollection/"+url;
+const renderOneRiverCollection = ({ title, url, desc }) => {
+  let ele = document.createElement("div")
+  ele.className= "rivers-collection";
 
-    let titleEle = createElementWithClassAndParent("div", ele, "river-title");
-    titleEle.innerHTML = title?title:url;
-    let descEle = createElementWithClassAndParent("p", ele, "river-desc");
-    descEle.innerHTML = desc?desc:"pending...";
+  let imgEle = createElementWithClassAndParent("img", ele, "river-img");
+  imgEle.src = "RiversCollection/" + url;
 
-
-
-
+  let titleEle = createElementWithClassAndParent("div", ele, "river-title");
+  titleEle.innerHTML = title ? title : url;
+  let descEle = createElementWithClassAndParent("p", ele, "river-desc");
+  descEle.innerHTML = desc ? desc : "pending...";
+  return ele;
 }
 
 const writeOnScreen = (text) => {
-  let ele = createElementWithClassAndParent("div", story_container, "story");
-  ele.innerHTML = text;
-  story_container.scrollBy({ top: 1000 });
+  console.log("JR NOTE: write on screen")
+
+  if (wanderer.traverses_mazes === TRAVERSE_ENUM.CLOCKWISE) {
+    let ele = createElementWithClassAndParent("div", story_container, "story");
+    ele.innerHTML = text;
+    story_container.scrollBy({ top: 1000 });
+  } else if (wanderer.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
+    console.log("JR NOTE: its river")
+
+    let popup = document.querySelector("#popup-container");
+    let ele = renderOneRiverCollection(rivers_collection.pop()); //exactly one at a time, in a set order.
+    console.log("JR NOTE: got ele")
+
+    //popup.innerHTML = "";//clear out past
+    popup.append(ele);
+    popup.style.display = "block";
+    wanderer.pause();
+    const handlePostPopupClick = () => {
+      console.log("JR NOTE: we handled a click. ")
+
+      popup.style.display = "none";
+      wanderer.resume();
+      window.removeEventListener("click", handlePostPopupClick);
+
+    }
+    setTimeout(()=>{
+      //if we go right away we'll handle THIS click which would be bad
+      window.addEventListener('click', handlePostPopupClick);
+    },100);
+
+
+
+
+  } else {
+    window.alert("THIEF. STOP THAT.")
+  }
 }
 
 const togglePlayPause = (e) => {

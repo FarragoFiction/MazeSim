@@ -18,7 +18,7 @@ const rivers_collection = [
   ,{themes: [],title: "", desc: "", url: "jose_maria_mora_1847.jpg"}
   ,{themes: [],title: "", desc: "", url: "joseph_mozier_1812.jpg"}
   ,{themes: [],title: "", desc: "", url: "joseph_mozier_1812_melancholy.jpg"}
-  ,{themes: [],title: "", desc: "why do they insist on doing this, over and over and over, is the world not vast enough for them, must they keep inventing false histories, false people, i read somewhere once that over one hundred billion humans have ever lived, and though it is so hard to find a specific body within my pulsating mass i can tell you that this is not one of them, not enough to merely create a false history but they must create false people to fill them, when real people are so many and so forgotten", url: "kenyon_cox_1856_notenotancient.jpg"}
+  ,{themes: [],title: "Counterfeit Egyptian Bust", desc: "why do they insist on doing this, over and over and over, is the world not vast enough for them, must they keep inventing false histories, false people, i read somewhere once that over one hundred billion humans have ever lived, and though it is so hard to find a specific body within my pulsating mass i can tell you that this is not one of them, not enough to merely create a false history but they must create false people to fill them, when real people are so many and so forgotten", url: "kenyon_cox_1856_notenotancient.jpg"}
   ,{themes: [],title: "", desc: "", url: "kudelski_group_1951.jpg"}
   ,{themes: [],title: "", desc: "", url: "maze_motif_1800s.jpg"}
   ,{themes: [],title: "", desc: "", url: "miner_kilbourne_kellog_1814.jpg"}
