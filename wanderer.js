@@ -171,7 +171,7 @@ class Wanderer {
         this.moveToSquare(back);
       }
     } else if (this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
-
+      console.log("river mode counter")
       if (right_ele && !right_ele.className.includes("wall")) {
         this.moveToSquare(right);
       } else if (forwards_ele && !forwards_ele.className.includes("wall")) {

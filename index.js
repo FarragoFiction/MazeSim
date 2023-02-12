@@ -59,15 +59,15 @@ const checkForRiver = () => {
 }
 
 //something else will pop this up.
-const renderOneRiverCollection = ({ title, url, desc,end }) => {
-  if(end){
+const renderOneRiverCollection = ({ title, url, desc, end }) => {
+  if (end) {
     let ele = document.createElement("div")
-    ele.className= "rivers-collection";
+    ele.className = "rivers-collection";
     ele.innerHTML = "theres so much in my head but i can't make it fit on paper, can't make my thoughts flow freely, sluggish like slime like muck like the drip of so much time that goes nowhere, stuck in a space much too small for it, i need to go back to leehunter, need to get more music so i can think right again"
-    return ele ;
+    return ele;
   }
   let ele = document.createElement("div")
-  ele.className= "rivers-collection";
+  ele.className = "rivers-collection";
 
   let imgEle = createElementWithClassAndParent("img", ele, "river-img");
   imgEle.src = "RiversCollection/" + url;
@@ -78,6 +78,8 @@ const renderOneRiverCollection = ({ title, url, desc,end }) => {
   descEle.innerHTML = desc ? desc : "pending...";
   return ele;
 }
+
+
 
 const writeOnScreen = (text) => {
   console.log("JR NOTE: write on screen")
@@ -90,7 +92,7 @@ const writeOnScreen = (text) => {
     console.log("JR NOTE: its river")
 
     let popup = document.querySelector("#popup-container");
-    let ele = renderOneRiverCollection(rivers_collection.length > 0 ? rivers_collection.pop(): {end:true}); //exactly one at a time, in a set order.
+    let ele = renderOneRiverCollection(rivers_collection.length > 0 ? rivers_collection.pop() : { end: true }); //exactly one at a time, in a set order.
     console.log("JR NOTE: got ele")
 
     popup.innerHTML = "";//clear out past
@@ -99,16 +101,40 @@ const writeOnScreen = (text) => {
     wanderer.pause();
     const handlePostPopupClick = () => {
       console.log("JR NOTE: we handled a click. ")
-
+      ele.remove();
       popup.style.display = "none";
       wanderer.resume();
       window.removeEventListener("click", handlePostPopupClick);
+      let button = createElementWithClassAndParent("button", story_container, "story-button");
+      button.innerHTML = `River's Collection ${rivers_collection.length}`;
+      story_container.scrollBy({ top: 1000 });
+
+
+      button.onclick = () => {//sure why not fracted nested popup click events
+        wanderer.pause();
+        popup.innerHTML = "";
+        popup.append(ele);
+        popup.style.display = "block";
+        const fractalNestedInnerPopupClcick = ()=>{
+          wanderer.resume();
+          ele.remove();
+          window.removeEventListener("click", fractalNestedInnerPopupClcick);
+          popup.style.display = "none";
+        }
+
+        setTimeout(() => {
+          //if we go right away we'll handle THIS click which would be bad
+          window.addEventListener('click', fractalNestedInnerPopupClcick);
+        }, 100);
+      }
+
+
 
     }
-    setTimeout(()=>{
+    setTimeout(() => {
       //if we go right away we'll handle THIS click which would be bad
       window.addEventListener('click', handlePostPopupClick);
-    },100);
+    }, 100);
 
 
 
