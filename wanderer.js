@@ -67,8 +67,7 @@ class Wanderer {
       this.decideWhatDirectionToMove();
       let time = 50;
       if (this.sticker_set_found) {
-        console.log("JR NOTE: stickersetfound")
-        time = this.traverses_mazes !== TRAVERSE_ENUM.COUNTERCLOCKWISE ? 1000 * 10 : 99999999;
+        time = this.traverses_mazes !== TRAVERSE_ENUM.COUNTERCLOCKWISE ? 1000 * 2 : 99999999;
         this.sticker_set_found.parentElement.className = "";//you don't have a sticker anymore
         this.sticker_set_found.click();
         this.sticker_set_found.remove();

@@ -16,7 +16,7 @@
 }
 
 #popup-container{
-  position: absolute;
+  position: fixed;
   top: 5vh;
   left: 25vw;
   z-index: 1000;

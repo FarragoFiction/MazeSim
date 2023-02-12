@@ -87,7 +87,7 @@ const writeOnScreen = (text) => {
     let ele = renderOneRiverCollection(rivers_collection.pop()); //exactly one at a time, in a set order.
     console.log("JR NOTE: got ele")
 
-    //popup.innerHTML = "";//clear out past
+    popup.innerHTML = "";//clear out past
     popup.append(ele);
     popup.style.display = "block";
     wanderer.pause();
