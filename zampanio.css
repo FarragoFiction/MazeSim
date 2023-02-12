@@ -18,7 +18,7 @@
 .rivers-collection{
   padding: 50px;
   font-size: 24px;
-  background-color: #e76f6f;
+  background-color: #e9a9a9;
   opacity: 0.9;
   color: #7f2323;
   border-radius: 133px;
@@ -26,6 +26,7 @@
   height: 90vh;
   overflow-y: hidden;
   border: 5px solid #7f2323;
+  background-image: radial-gradient(circle at 50% 50%, transparent 0%, #e76f6f 90%);
 
 }
 
