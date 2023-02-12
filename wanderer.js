@@ -55,11 +55,13 @@ class Wanderer {
 
   pause = () => {
     this.wandering = false;
+    syncButtonToWanderer();
   }
 
   resume = () => {
     this.wandering = true;
     this.wander();
+    syncButtonToWanderer();
   }
 
   wander = async () => {
@@ -70,8 +72,10 @@ class Wanderer {
         time = this.traverses_mazes !== TRAVERSE_ENUM.COUNTERCLOCKWISE ? 1000 * 2 : 99999999;
         this.sticker_set_found.parentElement.className = "";//you don't have a sticker anymore
         this.sticker_set_found.click();
-        this.sticker_set_found.remove();
-        this.sticker_set_found = null;
+        if(this.sticker_set_found){ //look, appaerntly thers a race condition with that click ...just. live with it. 
+          this.sticker_set_found.remove();
+          this.sticker_set_found = null;
+        }
       }
 
       if (this.traverses_mazes === TRAVERSE_ENUM.NEITHER) {
@@ -171,7 +175,6 @@ class Wanderer {
         this.moveToSquare(back);
       }
     } else if (this.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
-      console.log("river mode counter")
       if (right_ele && !right_ele.className.includes("wall")) {
         this.moveToSquare(right);
       } else if (forwards_ele && !forwards_ele.className.includes("wall")) {

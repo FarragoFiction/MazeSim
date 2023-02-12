@@ -99,7 +99,11 @@ const writeOnScreen = (text) => {
     popup.append(ele);
     popup.style.display = "block";
     wanderer.pause();
-    const handlePostPopupClick = () => {
+    const handlePostPopupClick = (e) => {
+      if(e){
+        console.log("JR NOTE: don't transfer the click down")
+        e.stopPropagation() //if popup is open stop paying attention to things like button clicks
+      }
       console.log("JR NOTE: we handled a click. ")
       ele.remove();
       popup.style.display = "none";
@@ -136,6 +140,13 @@ const writeOnScreen = (text) => {
       window.addEventListener('click', handlePostPopupClick);
     }, 100);
 
+    setTimeout(() => {
+      //in addition to click, clear yourself out after ten seconds so it still works in zero player mode
+      if(popup.style.display === "block"){
+        handlePostPopupClick();
+      }
+    }, 1000*10);
+
 
 
 
@@ -144,16 +155,24 @@ const writeOnScreen = (text) => {
   }
 }
 
+const syncButtonToWanderer = ()=>{
+  const button = document.querySelector("#play-button")
+  if(wanderer.wandering){
+    button.innerText = "Pause";
+  }else{
+    button.innerText = "Play";
+  }
+}
+
 const togglePlayPause = (e) => {
   let button = e.target;
   console.log(button);
-  if (button.innerText === "Pause") {
-    button.innerText = "Play";
+  if (wanderer.wandering) {
     wanderer.pause();
   } else {
-    button.innerText = "Pause";
     wanderer.resume();
   }
+  syncButtonToWanderer();
 }
 
 const renderOneMaze = (first = false) => {
