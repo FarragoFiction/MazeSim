@@ -59,7 +59,13 @@ const checkForRiver = () => {
 }
 
 //something else will pop this up.
-const renderOneRiverCollection = ({ title, url, desc }) => {
+const renderOneRiverCollection = ({ title, url, desc,end }) => {
+  if(end){
+    let ele = document.createElement("div")
+    ele.className= "rivers-collection";
+    ele.innerHTML = "theres so much in my head but i can't make it fit on paper, can't make my thoughts flow freely, sluggish like slime like muck like the drip of so much time that goes nowhere, stuck in a space much too small for it, i need to go back to leehunter, need to get more music so i can think right again"
+    return ele ;
+  }
   let ele = document.createElement("div")
   ele.className= "rivers-collection";
 
@@ -84,7 +90,7 @@ const writeOnScreen = (text) => {
     console.log("JR NOTE: its river")
 
     let popup = document.querySelector("#popup-container");
-    let ele = renderOneRiverCollection(rivers_collection.pop()); //exactly one at a time, in a set order.
+    let ele = renderOneRiverCollection(rivers_collection.length > 0 ? rivers_collection.pop(): {end:true}); //exactly one at a time, in a set order.
     console.log("JR NOTE: got ele")
 
     popup.innerHTML = "";//clear out past
