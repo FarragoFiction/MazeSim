@@ -1,8 +1,12 @@
 //raw html is fine
-const history = [
+//probably not using themes, not for river. this is SOUTH afterall, even if you have to try a bit to get here
+//river is not a fan of fiction or falsehoods
+//history is so vast
+//why would you want to muddy the waters by adding lies to it?
+const rivers_collection = [
   {themes: [], title: "Mother and Child: 1857", desc: "it's surprising the care mothers have for their children, or i guess it's not, as i am both mother and daughter... that doesn't make it easier to parse, or easier to look through my memories for it, or understandable from this woman's perspective... was it scary to have a child back then, i wonder, was it the same feeling all creatures feel when reproducing-- either way it has to be somewhat cruel... countless children died before i could ever see them, and so many don't get to live their lives before the apocalypse... just a speck in the wind, tiny, worthless, inconsequential... i wonder what it's like to live in the would forever...", url: "charles_frederick_naegele_1857.jpg"}
   ,{themes: [],title: "Sad Woman 1824", desc: "1824... she looks so morose... sad... i wonder what she is thinking about, in that state of hers-- i don't have enough data on this year, or any year in that bracket, to approximate the reasons why she would be feeling this way... i need to remind myself to not get angry at the people in this world for not keeping their records... they are so small, so unencompassing, it would not be possible, it would not be feasible, so this is all i have... i reserve the right to complain, though...", url: "edward_harrison_may_1824.jpg"}
-  ,{themes: [],title: "", desc: "", url: "edward_mitchel_bannster_1828.jpg"}
+  ,{themes: [],title: "Faceless Child", desc: "that child has no face... maybe it did once, but these works all age with time and oh do they age, oh do they wither against the dust of this earth... the page is brown as its own expression of boredom with itself, its yearning to be something else, but it can't-- it's stuck being itself and nothing but itself, mother and child both immortal in its page... that little kid has no face, time took it from her... i guess i can relate, hahaha...", url: "edward_mitchel_bannster_1828.jpg"}
   ,{themes: [],title: "", desc: "", url: "emile_galle_1846.jpg"}
   ,{themes: [PLANTS],title: "", desc: "", url: "fern_paleozoic_carboniferous.jpg"}
   ,{themes: [],title: "", desc: "", url: "ferns_1857.jpg"}
@@ -14,7 +18,7 @@ const history = [
   ,{themes: [],title: "", desc: "", url: "jose_maria_mora_1847.jpg"}
   ,{themes: [],title: "", desc: "", url: "joseph_mozier_1812.jpg"}
   ,{themes: [],title: "", desc: "", url: "joseph_mozier_1812_melancholy.jpg"}
-  ,{themes: [],title: "", desc: "", url: "kenyon_cox_1856_notenotancient.jpg"}
+  ,{themes: [],title: "", desc: "why do they insist on doing this, over and over and over, is the world not vast enough for them, must they keep inventing false histories, false people, i read somewhere once that over one hundred billion humans have ever lived, and though it is so hard to find a specific body within my pulsating mass i can tell you that this is not one of them, not enough to merely create a false history but they must create false people to fill them, when real people are so many and so forgotten", url: "kenyon_cox_1856_notenotancient.jpg"}
   ,{themes: [],title: "", desc: "", url: "kudelski_group_1951.jpg"}
   ,{themes: [],title: "", desc: "", url: "maze_motif_1800s.jpg"}
   ,{themes: [],title: "", desc: "", url: "miner_kilbourne_kellog_1814.jpg"}
