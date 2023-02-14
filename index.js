@@ -4,7 +4,9 @@ let wanderer;
 let maze_index = 0;
 let seeded_random;
 let story_container;
+var friday = false;
 window.onload = () => {
+  friday = true || new Date().getDay() === 5;
 
   initThemes();
   seeded_random = new SeededRandom(13);

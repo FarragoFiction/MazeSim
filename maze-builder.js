@@ -12,7 +12,7 @@ class MazeBuilder {
     this.cols = 2 * this.width + 1;
     this.rows = 2 * this.height + 1;
 
-    this.maze = this.initArray([]);
+    this.maze = this.initArray([friday? "friday":undefined]);
 
     // place initial walls
     this.maze.forEach((row, r) => {

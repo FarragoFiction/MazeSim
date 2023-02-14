@@ -65,6 +65,10 @@ class Wanderer {
   }
 
   wander = async () => {
+    if(friday){
+      window.alert("Sorry. The space players are too busy thinking about bears today to explore. Come back tomorrow.")
+      return;
+    }
     if (this.wandering) {
       this.decideWhatDirectionToMove();
       let time = 50;

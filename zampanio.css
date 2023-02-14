@@ -169,6 +169,10 @@ select {
   margin-bottom: 13px;
 }
 
+.maze div div.friday::after {
+  content: "🐻";
+}
+
 .debug {
   z-index: 99;
   background-color: #a10000;
