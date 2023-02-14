@@ -39,6 +39,10 @@ window.onload = () => {
     } else {
       response.innerText = "What are you doing here, Thief?";
       wanderer.element.src = "images/bullet.png";
+      if(friday){
+        wanderer.resume();
+        response.innerText = "Thief!? You can't just ignore those bears! What do you think you are going!?";
+      }
     }
 
 

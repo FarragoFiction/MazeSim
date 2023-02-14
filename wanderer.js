@@ -65,8 +65,8 @@ class Wanderer {
   }
 
   wander = async () => {
-    if(friday){
-      window.alert("Sorry. The space players are too busy thinking about bears today to explore. Come back tomorrow.")
+    if(friday && this.traverses_mazes !== TRAVERSE_ENUM.NEITHER){
+      window.alert("Sorry. The space aligned are too busy thinking about bears today to explore. Come back tomorrow.")
       return;
     }
     if (this.wandering) {
@@ -253,7 +253,11 @@ class Wanderer {
       let debug_ele = document.createElement("div");
       debug_ele.className = "debug";
       movement_object.square.append(debug_ele);
+    }else if(this.traverses_mazes === TRAVERSE_ENUM.NEITHER){
+      movement_object.square.className = "hole :)";
     }
+
+    
     let rect = this.element.getClientRects()[0];
     //window.scrollTo(rect.x, rect.y);
     this.element.scrollIntoView({
