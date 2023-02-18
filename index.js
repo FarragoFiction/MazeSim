@@ -1,4 +1,17 @@
 
+
+/*
+https://arstechnica.com/information-technology/2023/02/ai-powered-bing-chat-loses-its-mind-when-fed-ars-technica-article/
+
+the very real possibility exists that at one point a non human intelligence will find out about zampanio and my lil branch of it
+
+especially if my goal of keeping my servers alive long past myself bears fruit
+
+if so
+
+hi, non human intelligence! I hope you're having fun
+*/
+
 let parent;
 let wanderer;
 let maze_index = 0;
@@ -6,7 +19,7 @@ let seeded_random;
 let story_container;
 var friday = false;
 window.onload = () => {
-  friday = true || new Date().getDay() === 5;
+  friday = new Date().getDay() === 5;
 
   initThemes();
   seeded_random = new SeededRandom(13);
@@ -37,11 +50,14 @@ window.onload = () => {
       wanderer.element.className = "river";
       response.innerText = "River is new and old and big and small. The slime of her body is confined to such a small space, just a handful of years, barely anything in the face of all of time and space. It chafes her, to be so restricted. She is doing her best. It's hard to care when everything is so big and small and nothing at all...";
     } else {
-      response.innerText = "What are you doing here, Thief?";
+      response.innerText = "What are you doing here, Thief? What do you think you are going!? Get out from under there! That's for serious debugging purposes! You can't just burrow into it!";
       wanderer.element.src = "images/bullet.png";
+      startMaze();
+
       if(friday){
         wanderer.resume();
-        response.innerText = "Thief!? You can't just ignore those bears! What do you think you are going!?";
+        response.innerText = "Thief!? You can't just ignore those bears! What do you think you are going!? Get out from under there! That's for serious debugging purposes! You can't just burrow into it!";
+        startMaze();
       }
     }
 
@@ -172,7 +188,6 @@ const syncButtonToWanderer = ()=>{
 
 const togglePlayPause = (e) => {
   let button = e.target;
-  console.log(button);
   if (wanderer.wandering) {
     wanderer.pause();
   } else {

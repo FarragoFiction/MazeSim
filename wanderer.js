@@ -110,7 +110,7 @@ class Wanderer {
       let square = row.children[x];
       return square;
     } catch (e) {
-      prettyPrint("You are at an edge of the Maze.");
+      //prettyPrint("You are at an edge of the Maze.");
       return null;
     }
   }

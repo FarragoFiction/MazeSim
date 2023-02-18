@@ -2371,7 +2371,6 @@ const keysToThemes = (theme_keys) => {
 //tiers of 0 will be initialized when in use 
 //(YES this means that if the first player to use "Healing" theme has it high tier it will be high for EVERYONE. deal with tihs. )
 function initThemes() {
-    console.log("JR NOTE: init themes")
     //TODO eventually have each of these maps be a separate json file by key
     initThemeParts();
     checkIfAllKeysPresent();

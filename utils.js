@@ -107,6 +107,16 @@ const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
   }
 }
 
+const truthPrint = (text) => {
+  console.log(`%c${text}`, "font-weight: bold;color: red;font-family: 'Courier New';font-size:18px;");
+
+}
+
+const jrPrint = (text) => {
+  console.log(`%c${text}`, "font-family: 'Courier New'; font-size:12px;");
+
+}
+
 const prettyPrint = (text) => {
   console.log(`%c${text}`, "font-weight: bold;font-family: 'Avenir', monospace;color:black; font-size:18px;");
 
