@@ -200,6 +200,9 @@ The gun whispers softly to you as your coat squeezes just a little bit harder.
 You can leave, it says. 
 But first you must fire.
 Fire and fire and fire until there is nothing left that you love.
+It won't let you pretend anymore.
+Pretend you only love inert things. 
+Things that cannot be killed.
 You can feel your trigger finger moving, centimeter by centimeter.
 JR: !!!
 JR: Parker!
