@@ -3,6 +3,7 @@ const startMaze = () => {
   prettyPrint(`You are not in terrifyingly open hallways anymore. Instead, you find yourself in a long series of narrow tunnels. The earth presses comfortingly towards you in every direction but one. There are three paths ahead of you. There will ALWAYS be three paths ahead of you. One to the NORTH makes you think of finally killing the wanderer, the one who traps you here.  One to the EAST makes you think that perhaps if you kill the Universe itself you can finally burrow out of its corpse. And the final one, to the SOUTH makes you wonder if killing is the answer at all. Perhaps you wish to instead seek the Truth? You know deep in your bones that if you want to go in a direction, you should type it, and then parenthesis. Like this: NORTH().`)
 }
 
+//https://www.youtube.com/watch?v=KiAModrTbL0
 let rawNorth = `You know what you must do, deep inside.
 The Lord of Space, the Wanderer, the CEBro of Eyedol Games...
 Whatever you call her.

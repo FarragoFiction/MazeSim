@@ -167,7 +167,7 @@ const writeOnScreen = (text) => {
       if(popup.style.display === "block"){
         handlePostPopupClick();
       }
-    }, 1000*10);
+    }, 1000*30);
 
 
 
