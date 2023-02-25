@@ -102,7 +102,7 @@ const getRestaurantName = (rand, theme_keys, weird) => {
   }
   return rand.pickFrom(possibilities);
 }
-
+//https://at.tumblr.com/jadedresearcher/its-a-mistake-to-think-of-the-maze-and-the/bvd4vb233ive   this house of leaves branch of zampanio gets it
 const randomStickerSet = (rand,writeOnScreen)=>{
   const chosenThemeKey = rand.pickFrom(keys);
   let food = food_keys.indexOf(chosenThemeKey) !== -1;
