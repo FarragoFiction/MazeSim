@@ -85,7 +85,7 @@ const renderOneRiverCollection = ({ title, url, desc, end }) => {
   if (end) {
     let ele = document.createElement("div")
     ele.className = "rivers-collection";
-    ele.innerHTML = "theres so much in my head but i can't make it fit on paper, can't make my thoughts flow freely, sluggish like slime like muck like the drip of so much time that goes nowhere, stuck in a space much too small for it, i need to go back to leehunter, need to get more music so i can think right again"
+    ele.innerHTML = "theres so much in my head but i can't make it fit on paper, can't make my thoughts flow freely, sluggish like slime like muck like the drip of so much time that goes nowhere, stuck in a space much too small for it, i need to go back to leehunter, need to get more music so i can think right again<br><br>why does <a href = 'http://farragofiction.com/DearDiary'>this</a> exist? why does it feel like it has something to do with birthdays. maybe parker knows how to get into it?"
     return ele;
   }
   let ele = document.createElement("div")
@@ -104,18 +104,18 @@ const renderOneRiverCollection = ({ title, url, desc, end }) => {
 
 
 const writeOnScreen = (text) => {
-  console.log("JR NOTE: write on screen")
+  //console.log("JR NOTE: write on screen")
 
   if (wanderer.traverses_mazes === TRAVERSE_ENUM.CLOCKWISE) {
     let ele = createElementWithClassAndParent("div", story_container, "story");
     ele.innerHTML = text;
     story_container.scrollBy({ top: 1000 });
   } else if (wanderer.traverses_mazes === TRAVERSE_ENUM.COUNTERCLOCKWISE) {
-    console.log("JR NOTE: its river")
+    //console.log("JR NOTE: its river")
 
     let popup = document.querySelector("#popup-container");
     let ele = renderOneRiverCollection(rivers_collection.length > 0 ? rivers_collection.pop() : { end: true }); //exactly one at a time, in a set order.
-    console.log("JR NOTE: got ele")
+    //console.log("JR NOTE: got ele")
 
     popup.innerHTML = "";//clear out past
     popup.append(ele);
@@ -123,10 +123,10 @@ const writeOnScreen = (text) => {
     wanderer.pause();
     const handlePostPopupClick = (e) => {
       if(e){
-        console.log("JR NOTE: don't transfer the click down")
+        //console.log("JR NOTE: don't transfer the click down")
         e.stopPropagation() //if popup is open stop paying attention to things like button clicks
       }
-      console.log("JR NOTE: we handled a click. ")
+      //console.log("JR NOTE: we handled a click. ")
       ele.remove();
       popup.style.display = "none";
       wanderer.resume();

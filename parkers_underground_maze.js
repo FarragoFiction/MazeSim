@@ -53,8 +53,8 @@ JR: i'll still be here when you get back
 JR: no???
 JR: god you're worse than that wanderer sometimes, you know that, Parker???
 JR: although we both know you're not really Parker
-haven't been
-in a long time
+JR: haven't been
+JR: in a long time
 JR: but isn't it fun to pretend???
 JR: :claps:
 JR: ANYWAYS
@@ -95,7 +95,14 @@ JR: but none of that matters!
 JR: when the loop ends in 2022, all memes the Echidna knows about are restored from backups in the new dimension. Like always.
 JR: and Wanda is there again. 
 JR: and so is parker. and so is river.
-JR: the end is never the end. `
+JR: the end is never the end.
+JR: man wouldn't that be a good line to end on
+JR: but nope
+JR: i gotta actually give you something
+JR: cuz even if the end is never the ending
+JR: theres always a point where it branches to something new
+JR: http://farragofiction.com/DearDiary/?truth=true
+JR: have fun :) :) :)`
 
 let northIndex = 0;
 let northText = rawNorth.split("\n");
