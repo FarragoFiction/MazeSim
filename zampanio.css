@@ -183,6 +183,11 @@ select {
   content: "🐻";
 }
 
+.hole{
+  background-size: cover;
+  background-image: url("http://farragofiction.com/ZampanioGoshShouldYouTrustThis/train.png")
+}
+
 .debug {
   z-index: 99;
   background-color: #a10000;
