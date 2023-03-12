@@ -255,6 +255,9 @@ class Wanderer {
       movement_object.square.append(debug_ele);
     }else if(this.traverses_mazes === TRAVERSE_ENUM.NEITHER){
       movement_object.square.className = "hole :)";
+      const img = document.createElement("img");
+      img.src = "http://farragofiction.com/ZampanioGoshShouldYouTrustThis/train.png"; //same file, two ways. you decide what that means.  because to ME it means past JR is an fucker.
+      movement_object.square.append(img);
     }
 
     
